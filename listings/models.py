@@ -2,7 +2,6 @@ from django.conf import settings
 from django.db import models
 from materials.models import Material
 
-
 class Listing(models.Model):
     MODE_CHOICES = [
         ('sale', 'Sprzedaż'),

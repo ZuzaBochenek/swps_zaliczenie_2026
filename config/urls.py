@@ -24,6 +24,9 @@ urlpatterns = [
     # API (chronione tokenem)
     path('api/', include(router.urls)),
 
+    # API przeglądarkowe
+    path('api-auth/', include('rest_framework.urls')),
+
     # AUTH (publiczne)
     path('api/auth/register/', RegisterView.as_view()),
     path('api/auth/token/', obtain_auth_token),

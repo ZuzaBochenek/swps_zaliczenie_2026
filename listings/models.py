@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.db import models
+from materials.models import Material
 
-# Create your models here.
+
 class Listing(models.Model):
     MODE_CHOICES = [
         ('sale', 'Sprzedaż'),
@@ -41,5 +43,6 @@ class Listing(models.Model):
     description = models.TextField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
-   def __str__(self):
+
+    def __str__(self):
         return f"Listing #{self.id} - {self.material.title}"

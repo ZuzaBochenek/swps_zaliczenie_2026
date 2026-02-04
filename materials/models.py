@@ -14,12 +14,6 @@ class Material(models.Model):
         ('developmental', 'Psychologia rozwojowa'),
         ('neuro', 'Neuropsychologia'),
     ]
-    class Material(models.Model):
-    # choices
-    TYPE_CHOICES = [
-        ('book', 'Książka'),
-        ('notes', 'Notatki'),
-    ]
 
     SUBJECT_CHOICES = [
         ('social', 'Psychologia społeczna'),

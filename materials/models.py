@@ -15,13 +15,6 @@ class Material(models.Model):
         ('neuro', 'Neuropsychologia'),
     ]
 
-    SUBJECT_CHOICES = [
-        ('social', 'Psychologia społeczna'),
-        ('cognitive', 'Psychologia poznawcza'),
-        ('general', 'Psychologia ogólna'),
-        ('developmental', 'Psychologia rozwojowa'),
-        ('neuro', 'Neuropsychologia'),
-    ]
     # pola modelu
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255, blank=True)

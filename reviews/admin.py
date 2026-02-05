@@ -6,11 +6,16 @@ from .models import Review
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'listing',
         'reviewer',
+        'reviewed_user',
         'rating',
         'created_at',
     )
     list_filter = ('rating',)
-    search_fields = ('listing__material__title', 'reviewer__username')
+    search_fields = (
+        'reviewer__username',
+        'reviewed_user__username',
+        'comment',
+    )
+
 

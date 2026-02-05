@@ -30,6 +30,7 @@ python manage.py migrate
 
 # uruchomienie serwera
 python manage.py runserver
+```
 
 ## Założenia funkcjonalne
 

@@ -12,17 +12,72 @@ Aplikacja (Django REST API) do wymiany książkami, podręcznikami i notatkami d
 - IDE (np. Visual Studio Code)
 - Baza danych (np. PostgreSQL lub SQLite w zależności od konfiguracji)
 
-## Założenia funkcjonalne
-### Modele (4–5)
-1. **User** – konto użytkownika (student, administrator).
-2. **Material** – książka/podręcznik/notatka (tytuł, autor, typ, stan, opis, **rok studiów 1–5**, **przedmiot**: psychologia społeczna/psychologia poznawcza/psychologia ogólna/psychologia rozwojowa/neuropsychologia).
-3. **Listing** – ogłoszenie wymiany/sprzedaży (status, lokalizacja, opis, **tryb**: tylko sprzedaż/tylko wymiana/sprzedaż i/lub wymiana).
-4. **ExchangeRequest** – zgłoszenie wymiany/rezerwacji.
-5. **Review** – oceny/komentarze po zakończeniu wymiany.
+## Uruchomienie projektu lokalnie
 
-### Uwierzytelnianie i autoryzacja
-- Token-based authentication.
-- Co najmniej 2 role: **admin** i **user** z różnymi poziomami dostępu do endpointów.
+```bash
+# utworzenie środowiska wirtualnego
+python -m venv venv
+
+# aktywacja środowiska
+venv\Scripts\activate      # Windows
+source venv/bin/activate   # Linux / macOS
+
+# instalacja zależności
+pip install -r requirements.txt
+
+# migracje bazy danych
+python manage.py migrate
+
+# uruchomienie serwera
+python manage.py runserver
+
+## Założenia funkcjonalne
+
+### Modele danych
+
+1. **User**  
+   Rozszerzony model użytkownika (student / administrator).
+
+2. **Material**  
+   Książki, podręczniki lub notatki:
+   - tytuł
+   - autor
+   - typ materiału
+   - stan
+   - opis
+   - rok studiów (1–5)
+   - przedmiot (np. psychologia poznawcza, społeczna itd.)
+
+3. **Listing**  
+   Ogłoszenia dotyczące materiałów:
+   - właściciel ogłoszenia
+   - tryb (sprzedaż / wymiana / oba)
+   - status (aktywne / zarezerwowane / zamknięte)
+   - lokalizacja
+   - opis
+
+4. **ExchangeRequest**  
+   Zgłoszenia chęci wymiany lub rezerwacji ogłoszenia.
+
+5. **Review**  
+   System ocen użytkowników:
+   - użytkownik wystawiający ocenę
+   - użytkownik oceniany
+   - ocena (1–5)
+   - komentarz
+
+---
+
+## Uwierzytelnianie i autoryzacja
+
+- Token-based authentication (DRF Authtoken)
+- Role użytkowników:
+  - **admin**
+  - **user**
+- Dostęp do endpointów API wymaga uwierzytelnienia tokenem
+- Tylko właściciel zasobu może go edytować lub usuwać
+
+---
 
 ### Endpointy (CRUD)
 - CRUD dla wszystkich modeli.
@@ -32,12 +87,6 @@ Aplikacja (Django REST API) do wymiany książkami, podręcznikami i notatkami d
 - Lista ogłoszeń aktywnych dla konkretnego użytkownika.
 - Lista materiałów zaczynających się od wskazanego prefiksu.
 
-## Kryteria oceniania
-- Systematyczność i sens commitów.
-- Jakość kodu.
-- Implementacja zagadnień z zajęć.
-- Złożoność projektu (liczba modeli, endpointy, logika biznesowa).
-
 ## Organizacja pracy
 - Repozytorium na GitHub z dostępem prowadzącego.
-- W pracy grupowej obie osoby dodane jako collaborators.
+- W pracy grupowej obie osoby dodane jako collaborators: Zuzanna Bochenek i Natalia Żaboklicka.
